@@ -1,0 +1,4080 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1">
+
+<title>AT&T Spin To Win</title>
+
+<style>
+
+:root {
+  --att-blue: #0057b8;
+  --att-dark: #003b70;
+  --att-sky: #00a8e0;
+  --panel: #f5f8fc;
+  --border: #bcdff4;
+  --text: #003b70;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  color: var(--text);
+
+  background:
+    linear-gradient(
+      120deg,
+      #07549c,
+      #009fde
+    );
+
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* HEADER */
+
+.top {
+  position: sticky;
+  top: 0;
+
+  z-index: 20;
+
+  background:
+    rgba(
+      219,
+      232,
+      247,
+      .95
+    );
+
+  backdrop-filter:
+    blur(12px);
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      .6
+    );
+}
+
+.bar {
+  max-width: 1100px;
+
+  min-height: 70px;
+
+  margin: auto;
+
+  padding:
+    10px
+    20px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+}
+
+.brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 18px;
+
+  font-weight: 800;
+}
+
+.globe {
+  width: 40px;
+
+  height: 40px;
+
+  border:
+    3px solid
+    #00a8e0;
+
+  border-radius:
+    50%;
+
+  display: grid;
+
+  place-items:
+    center;
+
+  color:
+    #00a8e0;
+
+  font-size:
+    25px;
+
+  background:
+    white;
+}
+
+.subtitle {
+  color:
+    #1689cd;
+
+  font-size:
+    11px;
+
+  letter-spacing:
+    .5px;
+}
+
+.nav {
+  display: flex;
+
+  gap: 8px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.btn,
+.nav button {
+  border:
+    1px solid
+    #0c72c6;
+
+  color:
+    #004b87;
+
+  background:
+    white;
+
+  border-radius:
+    9px;
+
+  padding:
+    9px
+    14px;
+
+  font-weight:
+    700;
+}
+
+.btn:hover,
+.nav button:hover {
+  filter:
+    brightness(.97);
+}
+
+.nav button.active,
+.btn.primary {
+  color:
+    white;
+
+  background:
+    #0864c7;
+}
+
+.present {
+  margin-left:
+    auto;
+}
+
+/* MAIN */
+
+.wrap {
+  max-width:
+    1000px;
+
+  margin:
+    28px auto;
+
+  padding:
+    0 18px 80px;
+}
+
+.screen {
+  display:
+    none;
+}
+
+.screen.active {
+  display:
+    block;
+}
+
+/* EMPTY STATE */
+
+.empty {
+  max-width:
+    550px;
+
+  margin:
+    55px auto;
+
+  background:
+    #f7f9fc;
+
+  border:
+    1px dashed
+    #81bce4;
+
+  border-radius:
+    16px;
+
+  padding:
+    40px;
+
+  text-align:
+    center;
+
+  box-shadow:
+    0 10px 30px
+    rgba(
+      0,
+      59,
+      112,
+      .15
+    );
+}
+
+.empty-icon {
+  font-size:
+    45px;
+}
+
+.empty h1 {
+  font-size:
+    26px;
+
+  margin-bottom:
+    12px;
+}
+
+/* CARDS */
+
+.card {
+  background:
+    #f7f9fc;
+
+  border:
+    1px solid
+    #d8e8f4;
+
+  border-radius:
+    16px;
+
+  padding:
+    24px;
+
+  margin-bottom:
+    22px;
+
+  box-shadow:
+    0 6px 18px
+    rgba(
+      0,
+      59,
+      112,
+      .08
+    );
+}
+
+.card h2 {
+  margin:
+    0 0 16px;
+
+  font-size:
+    21px;
+}
+
+.card h3 {
+  margin-bottom:
+    10px;
+}
+
+.muted {
+  color:
+    #3978bd;
+
+  font-size:
+    13px;
+}
+
+.row {
+  display:
+    flex;
+
+  gap:
+    10px;
+
+  align-items:
+    center;
+}
+
+.grid2 {
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:
+    14px;
+}
+
+.field {
+  width:
+    100%;
+
+  padding:
+    11px 12px;
+
+  border:
+    1px solid
+    #8fd1f4;
+
+  outline:
+    none;
+
+  border-radius:
+    9px;
+
+  background:
+    white;
+
+  color:
+    #003b70;
+}
+
+.field:focus {
+  border-color:
+    #00a8e0;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(
+      0,
+      168,
+      224,
+      .12
+    );
+}
+
+.textarea {
+  min-height:
+    100px;
+
+  resize:
+    vertical;
+}
+
+/* LIST */
+
+.list {
+  margin-top:
+    16px;
+
+  border:
+    1px solid
+    #cce6f5;
+
+  border-radius:
+    13px;
+
+  overflow:
+    hidden;
+
+  background:
+    white;
+}
+
+.listhead {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  background:
+    #e3f5fd;
+
+  padding:
+    12px 14px;
+
+  font-weight:
+    800;
+}
+
+.person {
+  padding:
+    11px 14px;
+
+  border-top:
+    1px solid
+    #e5eef5;
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+}
+
+.remove-person {
+  color:
+    #ad2032;
+
+  background:
+    transparent;
+
+  border:
+    0;
+
+  font-weight:
+    700;
+}
+
+.section {
+  margin-top:
+    20px;
+
+  padding-top:
+    20px;
+
+  border-top:
+    1px solid
+    #dbe7ef;
+}
+
+/* THEMES */
+
+.themes {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      1fr
+    );
+
+  gap:
+    10px;
+
+  margin-top:
+    14px;
+}
+
+.theme {
+  min-height:
+    70px;
+
+  border:
+    2px solid
+    transparent;
+
+  border-radius:
+    11px;
+
+  display:
+    flex;
+
+  align-items:
+    flex-end;
+
+  padding:
+    9px;
+
+  color:
+    white;
+
+  font-weight:
+    800;
+
+  text-shadow:
+    0 1px 3px
+    rgba(
+      0,
+      0,
+      0,
+      .65
+    );
+}
+
+.theme.selected {
+  border-color:
+    #00aeef;
+
+  outline:
+    2px solid
+    white;
+}
+
+/* TOGGLES */
+
+.toggle-box {
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  padding:
+    14px;
+
+  border:
+    1px solid
+    #cfe4f2;
+
+  border-radius:
+    12px;
+
+  background:
+    #f9fcff;
+}
+
+.toggle-box input {
+  width:
+    20px;
+
+  height:
+    20px;
+}
+
+/* WHEEL */
+
+.wheel-wrap {
+  min-height:
+    650px;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  text-align:
+    center;
+}
+
+.wheel-box {
+  position:
+    relative;
+
+  width:
+    min(
+      72vw,
+      620px
+    );
+
+  aspect-ratio:
+    1;
+}
+
+#wheel {
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  filter:
+    drop-shadow(
+      0 15px 25px
+      rgba(
+        0,
+        59,
+        112,
+        .45
+      )
+    );
+
+  transition-property:
+    transform;
+
+  transition-duration:
+    7s;
+
+  transition-timing-function:
+    cubic-bezier(
+      .12,
+      .74,
+      .08,
+      1
+    );
+}
+
+.pointer {
+  position:
+    absolute;
+
+  z-index:
+    5;
+
+  right:
+    -15px;
+
+  top:
+    50%;
+
+  transform:
+    translateY(-50%);
+
+  width:
+    0;
+
+  height:
+    0;
+
+  border-top:
+    18px solid transparent;
+
+  border-bottom:
+    18px solid transparent;
+
+  border-left:
+    34px solid white;
+
+  filter:
+    drop-shadow(
+      0 2px 3px
+      rgba(
+        0,
+        0,
+        0,
+        .4
+      )
+    );
+}
+
+.spin-button {
+  margin-top:
+    20px;
+
+  padding:
+    14px 30px;
+
+  font-size:
+    19px;
+
+  box-shadow:
+    0 7px 18px
+    rgba(
+      0,
+      59,
+      112,
+      .25
+    );
+}
+
+/* WINNER OVERLAY */
+
+.winner-overlay {
+  position:
+    fixed;
+
+  inset:
+    0;
+
+  z-index:
+    100;
+
+  display:
+    none;
+
+  place-items:
+    center;
+
+  background:
+    rgba(
+      0,
+      59,
+      112,
+      .88
+    );
+
+  backdrop-filter:
+    blur(5px);
+}
+
+.winner-overlay.show {
+  display:
+    grid;
+}
+
+.winner-card {
+  min-width:
+    340px;
+
+  max-width:
+    90vw;
+
+  background:
+    white;
+
+  border-radius:
+    20px;
+
+  padding:
+    40px 55px;
+
+  text-align:
+    center;
+
+  box-shadow:
+    0 30px 80px
+    rgba(
+      0,
+      0,
+      0,
+      .35
+    );
+
+  animation:
+    winnerPop
+    .45s ease;
+}
+
+@keyframes winnerPop {
+
+  from {
+    transform:
+      scale(.7);
+
+    opacity:
+      0;
+  }
+
+  to {
+    transform:
+      scale(1);
+
+    opacity:
+      1;
+  }
+
+}
+
+.winner-title {
+  font-weight:
+    800;
+
+  letter-spacing:
+    1px;
+}
+
+.winner-name {
+  margin:
+    15px 0 25px;
+
+  color:
+    #0067b9;
+
+  font-size:
+    42px;
+
+  font-weight:
+    900;
+}
+
+/* HOTKEYS */
+
+.hotkeys kbd {
+  display:
+    inline-block;
+
+  min-width:
+    48px;
+
+  padding:
+    5px 12px;
+
+  border-radius:
+    5px;
+
+  text-align:
+    center;
+
+  color:
+    white;
+
+  background:
+    #004882;
+
+  font-weight:
+    700;
+}
+
+.hotkeys .hotkey-row {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  padding:
+    9px;
+
+  border:
+    1px solid
+    #d5e8f5;
+
+  border-radius:
+    9px;
+
+  margin:
+    8px 0;
+
+  background:
+    white;
+}
+
+/* PRESENTATION MODE */
+
+.hide-ui .top,
+.hide-ui .controls {
+  display:
+    none;
+}
+
+.hide-ui .wrap {
+  max-width:
+    none;
+
+  margin:
+    0;
+
+  padding:
+    0;
+}
+
+.hide-ui .wheel-wrap {
+  min-height:
+    100vh;
+}
+
+/* RESPONSIVE */
+
+@media (
+  max-width: 750px
+) {
+
+  .bar {
+    flex-wrap:
+      wrap;
+  }
+
+  .present {
+    margin-left:
+      0;
+  }
+
+  .grid2 {
+    grid-template-columns:
+      1fr;
+  }
+
+  .themes {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .wheel-box {
+    width:
+      90vw;
+  }
+
+  .row {
+    flex-wrap:
+      wrap;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="top">
+
+<div class="bar">
+
+<div class="brand">
+
+<div class="globe">
+≋
+</div>
+
+<div>
+
+<div>
+AT&amp;T Spin To Win
+</div>
+
+<div class="subtitle">
+✣ PRIZE WHEEL
+</div>
+
+</div>
+
+</div>
+
+
+<nav class="nav">
+
+<button
+id="wheelTab"
+class="active">
+
+Wheel
+
+</button>
+
+
+<button
+id="setupTab">
+
+⚙ Setup
+
+</button>
+
+</nav>
+
+
+<button
+id="presentButton"
+class="btn primary present">
+
+⛶ Present
+
+</button>
+
+</div>
+
+</header>
+
+
+
+<main class="wrap">
+
+
+<!-- ======================================
+     WHEEL
+======================================= -->
+
+
+<section
+id="wheelScreen"
+class="screen active">
+
+
+<div
+id="emptyState"
+class="empty">
+
+<div class="empty-icon">
+🏆
+</div>
+
+<h1>
+Ready to Spin To Win
+</h1>
+
+<p class="muted">
+
+Add participants in Setup to load your wheel.
+You can type names one at a time,
+paste a bulk list,
+or import a CSV.
+
+</p>
+
+
+<button
+id="openSetupButton"
+class="btn primary">
+
+⚙ Open Setup
+
+</button>
+
+</div>
+
+
+
+<div
+id="wheelArea"
+class="wheel-wrap"
+hidden>
+
+
+<div>
+
+
+<div class="wheel-box">
+
+<canvas
+id="wheel"
+width="700"
+height="700">
+</canvas>
+
+<div class="pointer">
+</div>
+
+</div>
+
+
+<button
+id="spinButton"
+class="btn primary spin-button controls">
+
+SPIN THE WHEEL
+
+</button>
+
+
+<p
+id="participantCounter"
+class="controls"
+style="
+color:white;
+font-weight:800;
+">
+</p>
+
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- ======================================
+     SETUP
+======================================= -->
+
+
+<section
+id="setupScreen"
+class="screen">
+
+
+<!-- EVENT LABEL -->
+
+
+<div class="card">
+
+<h2>
+🏷 Session / Event label
+</h2>
+
+<p class="muted">
+
+Optional. Use this to identify the
+event, drawing, town hall, kickoff,
+or raffle.
+
+</p>
+
+
+<input
+id="eventLabel"
+class="field"
+placeholder="e.g. Q4 Kickoff, Holiday Party, Customer Raffle">
+
+</div>
+
+
+
+<!-- PARTICIPANTS -->
+
+
+<div class="card">
+
+<h2>
+
+♙ Participants
+
+<span
+id="participantBadge"
+style="
+float:right;
+font-size:13px;
+">
+
+0 on wheel
+
+</span>
+
+</h2>
+
+
+<div class="row">
+
+
+<input
+id="singleName"
+class="field"
+placeholder="Type a name and press Enter">
+
+
+<button
+id="addOneButton"
+class="btn primary">
+
+＋ Add
+
+</button>
+
+
+</div>
+
+
+
+<p>
+<strong>
+Bulk paste (one name per line)
+</strong>
+</p>
+
+
+<textarea
+id="bulkNames"
+class="field textarea"
+placeholder="Jane Doe
+John Smith
+Rosa Garcia">
+</textarea>
+
+
+
+<div class="row">
+
+<button
+id="addBulkButton"
+class="btn">
+
+＋ Add
+
+</button>
+
+
+<button
+id="clearBulkButton"
+class="btn">
+
+Clear textbox
+
+</button>
+
+</div>
+
+
+
+<div class="section">
+
+<h3>
+CSV import &amp; export
+</h3>
+
+
+<p class="muted">
+
+Single-column CSV.
+The first column is treated as the participant name.
+A header named "Name" is optional.
+
+</p>
+
+
+<input
+type="file"
+id="csvFile"
+accept=".csv,text/csv"
+hidden>
+
+
+<div class="row">
+
+
+<button
+id="importCsvButton"
+class="btn">
+
+Import CSV (append)
+
+</button>
+
+
+<button
+id="exportParticipantsButton"
+class="btn">
+
+⇩ Export CSV
+
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<div class="list">
+
+<div class="listhead">
+
+<span>
+Current list
+</span>
+
+
+<button
+id="clearParticipantsButton"
+class="btn">
+
+Clear all
+
+</button>
+
+</div>
+
+
+<div id="participantList">
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<!-- CUSTOMIZATION -->
+
+
+<div class="card">
+
+<h2>
+🎨 Customization
+</h2>
+
+
+<h3>
+Center logo
+</h3>
+
+
+<p class="muted">
+
+Upload your own logo.
+PNG and JPG files work well.
+
+</p>
+
+
+<input
+type="file"
+id="logoFile"
+accept="image/*">
+
+
+<p>
+
+Logo size:
+
+<strong id="logoSizeLabel">
+28%
+</strong>
+
+</p>
+
+
+<input
+id="logoSize"
+type="range"
+min="0"
+max="100"
+value="28"
+style="width:100%">
+
+
+
+<div class="section">
+
+
+<h3>
+Background
+</h3>
+
+
+<p class="muted">
+
+Choose a preset background.
+
+</p>
+
+
+<div
+id="themeGrid"
+class="themes">
+</div>
+
+
+</div>
+
+
+
+<div class="section">
+
+<h3>
+Winner reveal style
+</h3>
+
+
+<select
+id="winnerStyle"
+class="field">
+
+<option value="banner">
+Name banner
+</option>
+
+<option value="glow">
+Subtle glow
+</option>
+
+<option value="full">
+Full-screen takeover
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="section">
+
+<h3>
+Spin duration
+</h3>
+
+
+<p>
+
+<strong id="spinDurationLabel">
+7s
+</strong>
+
+</p>
+
+
+<input
+id="spinDuration"
+type="range"
+min="3"
+max="20"
+value="7"
+style="width:100%">
+
+<div
+class="row"
+style="
+justify-content:space-between;
+">
+
+<span class="muted">
+3s
+</span>
+
+<span class="muted">
+20s
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="section">
+
+<div class="grid2">
+
+
+<label class="toggle-box">
+
+<span>
+
+<strong>
+Remove winner after spin
+</strong>
+
+<br>
+
+<small class="muted">
+Winner is removed automatically.
+</small>
+
+</span>
+
+<input
+id="removeWinner"
+type="checkbox"
+checked>
+
+</label>
+
+
+
+<label class="toggle-box">
+
+<span>
+
+<strong>
+Hotkeys enabled
+</strong>
+
+<br>
+
+<small class="muted">
+Global keyboard shortcuts.
+</small>
+
+</span>
+
+<input
+id="hotkeysEnabled"
+type="checkbox"
+checked>
+
+</label>
+
+
+
+<label class="toggle-box">
+
+<span>
+
+<strong>
+Show participant counter
+</strong>
+
+<br>
+
+<small class="muted">
+Display remaining names.
+</small>
+
+</span>
+
+<input
+id="showCounter"
+type="checkbox">
+
+</label>
+
+
+
+<label class="toggle-box">
+
+<span>
+
+<strong>
+Sound effects
+</strong>
+
+<br>
+
+<small class="muted">
+Enable wheel sounds.
+</small>
+
+</span>
+
+<input
+id="soundEnabled"
+type="checkbox"
+checked>
+
+</label>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<!-- HOTKEYS -->
+
+
+<div class="card hotkeys">
+
+<h2>
+⌨ Hotkeys
+</h2>
+
+
+<div class="grid2">
+
+
+<div>
+
+
+<div class="hotkey-row">
+
+<kbd>Space</kbd>
+
+<span>
+Spin the wheel
+</span>
+
+</div>
+
+
+<div class="hotkey-row">
+
+<kbd>H</kbd>
+
+<span>
+Hide / show UI
+</span>
+
+</div>
+
+
+<div class="hotkey-row">
+
+<kbd>U</kbd>
+
+<span>
+Undo the last spin
+</span>
+
+</div>
+
+
+<div class="hotkey-row">
+
+<kbd>S</kbd>
+
+<span>
+Open Setup
+</span>
+
+</div>
+
+
+</div>
+
+
+
+<div>
+
+
+<div class="hotkey-row">
+
+<kbd>F</kbd>
+
+<span>
+Presentation / fullscreen
+</span>
+
+</div>
+
+
+<div class="hotkey-row">
+
+<kbd>R</kbd>
+
+<span>
+Restore removed winners
+</span>
+
+</div>
+
+
+<div class="hotkey-row">
+
+<kbd>M</kbd>
+
+<span>
+Mute / unmute sounds
+</span>
+
+</div>
+
+
+<div class="hotkey-row">
+
+<kbd>Esc</kbd>
+
+<span>
+Exit overlays
+</span>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- EXTERNAL SCREEN INSTRUCTIONS -->
+
+
+<div class="card">
+
+<h2>
+🖥 How to display on an external screen
+</h2>
+
+
+<p class="muted">
+
+The wheel is designed for projectors,
+TVs, LED displays, or a second monitor.
+
+</p>
+
+
+<ol>
+
+<li>
+<strong>Connect your external display.</strong>
+</li>
+
+<li>
+Drag this browser window onto the external display.
+</li>
+
+<li>
+Press the
+<strong>Present</strong>
+button or press
+<strong>F</strong>.
+</li>
+
+<li>
+Press
+<strong>Space</strong>
+to spin.
+</li>
+
+<li>
+Press
+<strong>H</strong>
+to hide or show the interface.
+</li>
+
+<li>
+Press
+<strong>Esc</strong>
+to exit Presentation mode.
+</li>
+
+</ol>
+
+
+</div>
+
+
+
+<!-- WINNER HISTORY -->
+
+
+<div class="card">
+
+<h2>
+🏆 Winners history
+</h2>
+
+
+<div class="row">
+
+
+<button
+id="exportWinnersButton"
+class="btn">
+
+⇩ Export CSV
+
+</button>
+
+
+<button
+id="printWinnersButton"
+class="btn">
+
+Print winners
+
+</button>
+
+
+<button
+id="clearWinnersButton"
+class="btn">
+
+Clear history
+
+</button>
+
+
+</div>
+
+
+
+<div
+id="winnerHistory"
+class="list"
+style="
+padding:16px;
+margin-top:16px;
+">
+
+No winners yet.
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- WINNER OVERLAY -->
+
+
+<div
+id="winnerOverlay"
+class="winner-overlay">
+
+
+<div class="winner-card">
+
+
+<div class="winner-title">
+
+🏆 WINNER
+
+</div>
+
+
+<div
+id="winnerName"
+class="winner-name">
+</div>
+
+
+<button
+id="continueButton"
+class="btn primary">
+
+Continue
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+/* =========================================
+   STATE
+========================================= */
+
+
+const $ =
+selector =>
+document.querySelector(selector);
+
+
+let participants =
+JSON.parse(
+localStorage.getItem(
+"spinToWinParticipants"
+) || "[]"
+);
+
+
+let winners =
+JSON.parse(
+localStorage.getItem(
+"spinToWinWinners"
+) || "[]"
+);
+
+
+let removedWinners =
+[];
+
+
+let wheelRotation =
+0;
+
+
+let customLogo =
+null;
+
+
+let soundMuted =
+false;
+
+
+
+const themes = [
+
+{
+  name:
+    "Clean White",
+
+  value:
+    "linear-gradient(135deg,#ffffff,#e8f4fb)"
+},
+
+{
+  name:
+    "Ice",
+
+  value:
+    "linear-gradient(135deg,#deeff8,#bde8fa)"
+},
+
+{
+  name:
+    "Sky",
+
+  value:
+    "linear-gradient(135deg,#5dc9e7,#00a8e0)"
+},
+
+{
+  name:
+    "Deep Blue",
+
+  value:
+    "linear-gradient(135deg,#0862bf,#0057b8)"
+},
+
+{
+  name:
+    "Navy",
+
+  value:
+    "linear-gradient(135deg,#004b87,#003b70)"
+},
+
+{
+  name:
+    "Signature Gradient",
+
+  value:
+    "linear-gradient(120deg,#07549c,#00a8df)"
+},
+
+{
+  name:
+    "Sky Fade",
+
+  value:
+    "linear-gradient(180deg,#ffffff,#00a8df)"
+},
+
+{
+  name:
+    "Radial Spotlight",
+
+  value:
+    "radial-gradient(circle,#5ed4f2,#0057b8 60%,#003b70)"
+},
+
+{
+  name:
+    "Christmas",
+
+  value:
+    "linear-gradient(135deg,#075e2f,#22a35a,#c5162e)"
+},
+
+{
+  name:
+    "Halloween",
+
+  value:
+    "linear-gradient(135deg,#28004e,#6e087c,#ff6a00)"
+},
+
+{
+  name:
+    "Thanksgiving",
+
+  value:
+    "linear-gradient(135deg,#8d2900,#ed9c36)"
+},
+
+{
+  name:
+    "Valentine's",
+
+  value:
+    "linear-gradient(135deg,#ff4f91,#b90043)"
+},
+
+{
+  name:
+    "Easter / Spring",
+
+  value:
+    "linear-gradient(135deg,#e7f8ff,#d5f6c6,#fff9a8)"
+},
+
+{
+  name:
+    "July 4th",
+
+  value:
+    "linear-gradient(135deg,#ca1836,#ffffff,#17285b)"
+},
+
+{
+  name:
+    "Winter Frost",
+
+  value:
+    "linear-gradient(180deg,#e6fbff,#7aaed0)"
+},
+
+{
+  name:
+    "Summer Sun",
+
+  value:
+    "linear-gradient(135deg,#ffd663,#ff9238,#ff4d4d)"
+}
+
+];
+
+
+let currentBackground =
+localStorage.getItem(
+"spinToWinBackground"
+) ||
+
+themes[5].value;
+
+
+
+/* =========================================
+   SAVE
+========================================= */
+
+
+function saveState() {
+
+localStorage.setItem(
+"spinToWinParticipants",
+JSON.stringify(
+participants
+)
+);
+
+
+localStorage.setItem(
+"spinToWinWinners",
+JSON.stringify(
+winners
+)
+);
+
+
+localStorage.setItem(
+"spinToWinBackground",
+currentBackground
+);
+
+}
+
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+
+function showScreen(
+screenName
+) {
+
+document
+.querySelectorAll(
+".screen"
+)
+.forEach(
+screen =>
+screen.classList.remove(
+"active"
+)
+);
+
+
+$(
+"#" +
+screenName +
+"Screen"
+)
+.classList.add(
+"active"
+);
+
+
+$("#wheelTab")
+.classList.toggle(
+"active",
+screenName === "wheel"
+);
+
+
+$("#setupTab")
+.classList.toggle(
+"active",
+screenName === "setup"
+);
+
+
+render();
+
+}
+
+
+$("#wheelTab").addEventListener(
+"click",
+() =>
+showScreen(
+"wheel"
+)
+);
+
+
+$("#setupTab").addEventListener(
+"click",
+() =>
+showScreen(
+"setup"
+)
+);
+
+
+$("#openSetupButton")
+.addEventListener(
+"click",
+() =>
+showScreen(
+"setup"
+)
+);
+
+
+
+/* =========================================
+   SAFE TEXT
+========================================= */
+
+
+function escapeHtml(
+text
+) {
+
+return String(
+text
+).replace(
+/[&<>"']/g,
+character => {
+
+const map = {
+
+"&":
+"&amp;",
+
+"<":
+"&lt;",
+
+">":
+"&gt;",
+
+'"':
+"&quot;",
+
+"'":
+"&#039;"
+
+};
+
+return map[
+character
+];
+
+}
+);
+
+}
+
+
+
+/* =========================================
+   RENDER
+========================================= */
+
+
+function render() {
+
+saveState();
+
+
+$("#participantBadge")
+.textContent =
+participants.length +
+" on wheel";
+
+
+if(
+participants.length
+) {
+
+$("#participantList")
+.innerHTML =
+
+participants
+.map(
+(
+name,
+index
+) => `
+
+<div class="person">
+
+<span>
+${escapeHtml(name)}
+</span>
+
+<button
+class="remove-person"
+data-index="${index}">
+
+Remove
+
+</button>
+
+</div>
+
+`
+)
+.join("");
+
+}
+
+else {
+
+$("#participantList")
+.innerHTML = `
+
+<p
+class="muted"
+style="
+text-align:center;
+padding:22px;
+">
+
+No participants yet.
+Add names above.
+
+</p>
+
+`;
+
+}
+
+
+$("#emptyState").hidden =
+participants.length >
+0;
+
+
+$("#wheelArea").hidden =
+participants.length ===
+0;
+
+
+$("#participantCounter")
+.textContent =
+
+$("#showCounter").checked
+
+? participants.length +
+" participants remaining"
+
+: "";
+
+
+/* Winner history */
+
+if(
+winners.length
+) {
+
+$("#winnerHistory")
+.innerHTML =
+
+winners
+.map(
+(
+winner,
+index
+) => `
+
+<div
+style="
+padding:8px 0;
+border-bottom:1px solid #e6eef5;
+">
+
+${index + 1}.
+
+<strong>
+
+${escapeHtml(
+winner.name
+)}
+
+</strong>
+
+<span class="muted">
+
+${new Date(
+winner.time
+).toLocaleString()}
+
+</span>
+
+</div>
+
+`
+)
+.join("");
+
+}
+
+else {
+
+$("#winnerHistory")
+.textContent =
+"No winners yet.";
+
+}
+
+
+drawWheel();
+
+}
+
+
+
+/* =========================================
+   PARTICIPANTS
+========================================= */
+
+
+function addParticipants(
+list
+) {
+
+list
+.map(
+name =>
+name.trim()
+)
+.filter(
+Boolean
+)
+.forEach(
+name => {
+
+const duplicate =
+participants.some(
+existing =>
+existing
+.toLowerCase() ===
+name.toLowerCase()
+);
+
+
+if(
+!duplicate
+) {
+
+participants.push(
+name
+);
+
+}
+
+}
+);
+
+
+render();
+
+}
+
+
+
+$("#addOneButton")
+.addEventListener(
+"click",
+() => {
+
+addParticipants(
+[
+$("#singleName").value
+]
+);
+
+
+$("#singleName").value =
+"";
+
+
+$("#singleName").focus();
+
+}
+);
+
+
+
+$("#singleName")
+.addEventListener(
+"keydown",
+event => {
+
+if(
+event.key ===
+"Enter"
+) {
+
+event.preventDefault();
+
+$("#addOneButton")
+.click();
+
+}
+
+}
+);
+
+
+
+$("#addBulkButton")
+.addEventListener(
+"click",
+() => {
+
+addParticipants(
+
+$("#bulkNames")
+.value
+.split(
+/\r?\n/
+)
+
+);
+
+}
+);
+
+
+
+$("#clearBulkButton")
+.addEventListener(
+"click",
+() => {
+
+$("#bulkNames").value =
+"";
+
+}
+);
+
+
+
+$("#participantList")
+.addEventListener(
+"click",
+event => {
+
+if(
+event.target.matches(
+".remove-person"
+)
+) {
+
+const index =
+Number(
+event.target.dataset.index
+);
+
+
+participants.splice(
+index,
+1
+);
+
+
+render();
+
+}
+
+}
+);
+
+
+
+$("#clearParticipantsButton")
+.addEventListener(
+"click",
+() => {
+
+participants = [];
+
+render();
+
+}
+);
+
+
+
+/* =========================================
+   CSV IMPORT
+========================================= */
+
+
+$("#importCsvButton")
+.addEventListener(
+"click",
+() => {
+
+$("#csvFile")
+.click();
+
+}
+);
+
+
+
+$("#csvFile")
+.addEventListener(
+"change",
+event => {
+
+const file =
+event.target.files[0];
+
+
+if(
+!file
+) {
+
+return;
+
+}
+
+
+const reader =
+new FileReader();
+
+
+reader.onload =
+loadEvent => {
+
+const lines =
+String(
+loadEvent.target.result
+)
+.split(
+/\r?\n/
+);
+
+
+const names =
+lines.map(
+(
+line,
+index
+) => {
+
+let value =
+line
+.split(",")[0]
+.trim();
+
+
+value =
+value.replace(
+/^"(.*)"$/,
+"$1"
+);
+
+
+value =
+value.replace(
+/""/g,
+'"'
+);
+
+
+if(
+index === 0 &&
+value.toLowerCase() ===
+"name"
+) {
+
+return "";
+
+}
+
+
+return value;
+
+}
+);
+
+
+addParticipants(
+names
+);
+
+
+event.target.value =
+"";
+
+};
+
+
+reader.readAsText(
+file
+);
+
+}
+);
+
+
+
+/* =========================================
+   DOWNLOAD
+========================================= */
+
+
+function downloadFile(
+filename,
+data,
+mimeType
+) {
+
+const blob =
+new Blob(
+[data],
+{
+type:
+mimeType
+}
+);
+
+
+const url =
+URL.createObjectURL(
+blob
+);
+
+
+const anchor =
+document.createElement(
+"a"
+);
+
+
+anchor.href =
+url;
+
+
+anchor.download =
+filename;
+
+
+document.body
+.appendChild(
+anchor
+);
+
+
+anchor.click();
+
+
+anchor.remove();
+
+
+setTimeout(
+() => {
+
+URL.revokeObjectURL(
+url
+);
+
+},
+100
+);
+
+}
+
+
+
+/* Participant export */
+
+$("#exportParticipantsButton")
+.addEventListener(
+"click",
+() => {
+
+const csv =
+
+"Name\n" +
+
+participants
+.map(
+name =>
+'"' +
+name.replaceAll(
+'"',
+'""'
+) +
+'"'
+)
+.join(
+"\n"
+);
+
+
+downloadFile(
+
+"participants.csv",
+
+csv,
+
+"text/csv"
+
+);
+
+}
+);
+
+
+
+/* Winners export */
+
+$("#exportWinnersButton")
+.addEventListener(
+"click",
+() => {
+
+const csv =
+
+"Name,Time\n" +
+
+winners
+.map(
+winner =>
+
+`"${
+winner.name.replaceAll(
+'"',
+'""'
+)
+}","${
+new Date(
+winner.time
+).toISOString()
+}"`
+
+)
+.join(
+"\n"
+);
+
+
+downloadFile(
+
+"winners.csv",
+
+csv,
+
+"text/csv"
+
+);
+
+}
+);
+
+
+
+/* =========================================
+   WHEEL DRAWING
+========================================= */
+
+
+const wheelColors = [
+
+"#00a8e0",
+
+"#0568c9",
+
+"#50cef1",
+
+"#003b70",
+
+"#64d1e7",
+
+"#0b4f9b",
+
+"#78ddf5",
+
+"#1577cf",
+
+"#0057b8",
+
+"#009fda"
+
+];
+
+
+
+function drawWheel() {
+
+const canvas =
+$("#wheel");
+
+
+const ctx =
+canvas.getContext(
+"2d"
+);
+
+
+const count =
+participants.length;
+
+
+const width =
+canvas.width;
+
+
+const height =
+canvas.height;
+
+
+const centerX =
+width / 2;
+
+
+const centerY =
+height / 2;
+
+
+const radius =
+width / 2 -
+12;
+
+
+ctx.clearRect(
+0,
+0,
+width,
+height
+);
+
+
+if(
+count === 0
+) {
+
+return;
+
+}
+
+
+for(
+let index = 0;
+index < count;
+index++
+) {
+
+const startAngle =
+
+index *
+2 *
+Math.PI /
+count
+
+-
+
+Math.PI / 2;
+
+
+const endAngle =
+
+(index + 1) *
+2 *
+Math.PI /
+count
+
+-
+
+Math.PI / 2;
+
+
+ctx.beginPath();
+
+
+ctx.moveTo(
+centerX,
+centerY
+);
+
+
+ctx.arc(
+
+centerX,
+
+centerY,
+
+radius,
+
+startAngle,
+
+endAngle
+
+);
+
+
+ctx.closePath();
+
+
+ctx.fillStyle =
+wheelColors[
+index %
+wheelColors.length
+];
+
+
+ctx.fill();
+
+
+ctx.strokeStyle =
+"#ffffff";
+
+
+ctx.lineWidth =
+3;
+
+
+ctx.stroke();
+
+
+/* Participant name */
+
+ctx.save();
+
+
+ctx.translate(
+centerX,
+centerY
+);
+
+
+ctx.rotate(
+(
+startAngle +
+endAngle
+) /
+2
+);
+
+
+ctx.fillStyle =
+"#ffffff";
+
+
+const textSize =
+Math.max(
+
+14,
+
+Math.min(
+
+27,
+
+280 /
+count
+
+)
+
+);
+
+
+ctx.font =
+`700 ${textSize}px system-ui`;
+
+
+ctx.textAlign =
+"right";
+
+
+ctx.textBaseline =
+"middle";
+
+
+ctx.fillText(
+
+participants[index]
+.slice(
+0,
+28
+),
+
+radius -
+25,
+
+0
+
+);
+
+
+ctx.restore();
+
+}
+
+
+/* Center */
+
+ctx.beginPath();
+
+
+ctx.arc(
+
+centerX,
+
+centerY,
+
+radius *
+.20,
+
+0,
+
+Math.PI *
+2
+
+);
+
+
+ctx.fillStyle =
+"#ffffff";
+
+
+ctx.fill();
+
+
+ctx.strokeStyle =
+"#b9def4";
+
+
+ctx.lineWidth =
+3;
+
+
+ctx.stroke();
+
+
+/* Custom logo */
+
+if(
+customLogo
+) {
+
+const logoPercent =
+Number(
+$("#logoSize").value
+);
+
+
+const maximum =
+radius *
+.38;
+
+
+const logoSize =
+maximum *
+(
+logoPercent /
+28
+);
+
+
+ctx.save();
+
+
+ctx.beginPath();
+
+
+ctx.arc(
+
+centerX,
+
+centerY,
+
+radius *
+.19,
+
+0,
+
+Math.PI *
+2
+
+);
+
+
+ctx.clip();
+
+
+ctx.drawImage(
+
+customLogo,
+
+centerX -
+logoSize /
+2,
+
+centerY -
+logoSize /
+2,
+
+logoSize,
+
+logoSize
+
+);
+
+
+ctx.restore();
+
+}
+
+else {
+
+ctx.fillStyle =
+"#00a8e0";
+
+
+ctx.textAlign =
+"center";
+
+
+ctx.textBaseline =
+"middle";
+
+
+ctx.font =
+"bold 50px system-ui";
+
+
+ctx.fillText(
+
+"≋",
+
+centerX,
+
+centerY
+
+);
+
+}
+
+}
+
+
+
+/* =========================================
+   RANDOM WINNER
+========================================= */
+
+
+function randomNumber() {
+
+if(
+window.crypto &&
+window.crypto.getRandomValues
+) {
+
+const array =
+new Uint32Array(
+1
+);
+
+
+window.crypto
+.getRandomValues(
+array
+);
+
+
+return (
+array[0] /
+4294967296
+);
+
+}
+
+
+return Math.random();
+
+}
+
+
+
+/* =========================================
+   SPIN
+========================================= */
+
+
+function spinWheel() {
+
+if(
+participants.length ===
+0
+) {
+
+return;
+
+}
+
+
+const wheel =
+$("#wheel");
+
+
+if(
+wheel.dataset.spinning ===
+"true"
+) {
+
+return;
+
+}
+
+
+wheel.dataset.spinning =
+"true";
+
+
+const winnerIndex =
+Math.floor(
+
+randomNumber() *
+participants.length
+
+);
+
+
+const sliceSize =
+360 /
+participants.length;
+
+
+/*
+ Because the pointer is on the right side,
+ offset the selected slice toward the
+ pointer after several complete rotations.
+*/
+
+const winnerCenter =
+winnerIndex *
+sliceSize +
+sliceSize /
+2;
+
+
+const desiredPosition =
+90 -
+winnerCenter;
+
+
+const normalizedAdjustment =
+
+(
+desiredPosition -
+
+(
+wheelRotation %
+360
+) +
+
+360
+
+) %
+360;
+
+
+wheelRotation +=
+
+360 *
+6 +
+
+normalizedAdjustment;
+
+
+const duration =
+Number(
+$("#spinDuration").value
+);
+
+
+wheel.style.transitionDuration =
+duration +
+"s";
+
+
+wheel.style.transform =
+
+`rotate(${wheelRotation}deg)`;
+
+
+/* Optional simple tick sound */
+
+if(
+$("#soundEnabled").checked &&
+!soundMuted
+) {
+
+playSpinSound();
+
+}
+
+
+setTimeout(
+() => {
+
+delete wheel.dataset.spinning;
+
+
+const winnerName =
+participants[
+winnerIndex
+];
+
+
+winners.unshift(
+{
+
+name:
+winnerName,
+
+time:
+Date.now()
+
+}
+);
+
+
+removedWinners.push(
+winnerName
+);
+
+
+showWinner(
+winnerName
+);
+
+
+if(
+$("#removeWinner").checked
+) {
+
+participants.splice(
+winnerIndex,
+1
+);
+
+}
+
+
+render();
+
+},
+duration *
+1000
+);
+
+}
+
+
+
+$("#spinButton")
+.addEventListener(
+"click",
+spinWheel
+);
+
+
+
+/* =========================================
+   SIMPLE SOUND
+========================================= */
+
+
+function playSpinSound() {
+
+try {
+
+const AudioContextClass =
+
+window.AudioContext ||
+
+window.webkitAudioContext;
+
+
+if(
+!AudioContextClass
+) {
+
+return;
+
+}
+
+
+const audioContext =
+new AudioContextClass();
+
+
+const oscillator =
+audioContext
+.createOscillator();
+
+
+const gain =
+audioContext
+.createGain();
+
+
+oscillator.type =
+"sine";
+
+
+oscillator.frequency.value =
+440;
+
+
+gain.gain.value =
+.06;
+
+
+oscillator.connect(
+gain
+);
+
+
+gain.connect(
+audioContext.destination
+);
+
+
+oscillator.start();
+
+
+gain.gain
+.exponentialRampToValueAtTime(
+
+.001,
+
+audioContext.currentTime +
+.16
+
+);
+
+
+oscillator.stop(
+audioContext.currentTime +
+.17
+);
+
+}
+
+catch(error) {
+
+console.log(
+"Audio unavailable:",
+error
+);
+
+}
+
+}
+
+
+
+/* =========================================
+   WINNER
+========================================= */
+
+
+function showWinner(
+name
+) {
+
+$("#winnerName")
+.textContent =
+name;
+
+
+$("#winnerOverlay")
+.classList.add(
+"show"
+);
+
+}
+
+
+
+$("#continueButton")
+.addEventListener(
+"click",
+() => {
+
+$("#winnerOverlay")
+.classList.remove(
+"show"
+);
+
+}
+);
+
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+
+$("#logoFile")
+.addEventListener(
+"change",
+event => {
+
+const file =
+event.target.files[0];
+
+
+if(
+!file
+) {
+
+return;
+
+}
+
+
+const reader =
+new FileReader();
+
+
+reader.onload =
+loadEvent => {
+
+const image =
+new Image();
+
+
+image.onload =
+() => {
+
+customLogo =
+image;
+
+drawWheel();
+
+};
+
+
+image.src =
+loadEvent.target.result;
+
+};
+
+
+reader.readAsDataURL(
+file
+);
+
+}
+);
+
+
+
+$("#logoSize")
+.addEventListener(
+"input",
+event => {
+
+$("#logoSizeLabel")
+.textContent =
+
+event.target.value +
+"%";
+
+
+drawWheel();
+
+}
+);
+
+
+
+/* =========================================
+   SPIN DURATION
+========================================= */
+
+
+$("#spinDuration")
+.addEventListener(
+"input",
+event => {
+
+$("#spinDurationLabel")
+.textContent =
+
+event.target.value +
+"s";
+
+}
+);
+
+
+
+$("#showCounter")
+.addEventListener(
+"change",
+render
+);
+
+
+
+/* =========================================
+   THEMES
+========================================= */
+
+
+function buildThemes() {
+
+const grid =
+$("#themeGrid");
+
+
+grid.innerHTML =
+"";
+
+
+themes.forEach(
+themeData => {
+
+const button =
+document.createElement(
+"button"
+);
+
+
+button.type =
+"button";
+
+
+button.className =
+"theme";
+
+
+button.textContent =
+themeData.name;
+
+
+button.style.background =
+themeData.value;
+
+
+if(
+themeData.value ===
+currentBackground
+) {
+
+button.classList.add(
+"selected"
+);
+
+}
+
+
+button.addEventListener(
+"click",
+() => {
+
+currentBackground =
+themeData.value;
+
+
+document.body.style.background =
+currentBackground;
+
+
+document
+.querySelectorAll(
+".theme"
+)
+.forEach(
+item =>
+item.classList.remove(
+"selected"
+)
+);
+
+
+button.classList.add(
+"selected"
+);
+
+
+saveState();
+
+}
+);
+
+
+grid.appendChild(
+button
+);
+
+}
+);
+
+}
+
+
+
+buildThemes();
+
+
+document.body.style.background =
+currentBackground;
+
+
+
+/* =========================================
+   PRESENTATION
+========================================= */
+
+
+async function enterPresentation() {
+
+showScreen(
+"wheel"
+);
+
+
+document.body
+.classList.add(
+"hide-ui"
+);
+
+
+try {
+
+if(
+!document.fullscreenElement
+) {
+
+await document
+.documentElement
+.requestFullscreen();
+
+}
+
+}
+
+catch(error) {
+
+console.log(
+"Fullscreen was blocked:",
+error
+);
+
+}
+
+}
+
+
+
+$("#presentButton")
+.addEventListener(
+"click",
+enterPresentation
+);
+
+
+
+document.addEventListener(
+"fullscreenchange",
+() => {
+
+if(
+!document.fullscreenElement
+) {
+
+document.body
+.classList.remove(
+"hide-ui"
+);
+
+}
+
+}
+);
+
+
+
+/* =========================================
+   WINNER HISTORY
+========================================= */
+
+
+$("#clearWinnersButton")
+.addEventListener(
+"click",
+() => {
+
+winners = [];
+
+render();
+
+}
+);
+
+
+
+$("#printWinnersButton")
+.addEventListener(
+"click",
+() => {
+
+window.print();
+
+}
+);
+
+
+
+/* =========================================
+   HOTKEYS
+========================================= */
+
+
+document.addEventListener(
+"keydown",
+event => {
+
+if(
+!$("#hotkeysEnabled").checked
+) {
+
+return;
+
+}
+
+
+const element =
+document.activeElement;
+
+
+const tagName =
+element
+? element.tagName
+: "";
+
+
+if(
+[
+"INPUT",
+"TEXTAREA",
+"SELECT"
+].includes(
+tagName
+)
+) {
+
+return;
+
+}
+
+
+const key =
+event.key
+.toLowerCase();
+
+
+/* SPACE */
+
+if(
+event.code ===
+"Space"
+) {
+
+event.preventDefault();
+
+spinWheel();
+
+}
+
+
+/* SETUP */
+
+if(
+key ===
+"s"
+) {
+
+showScreen(
+"setup"
+);
+
+}
+
+
+/* HIDE UI */
+
+if(
+key ===
+"h"
+) {
+
+document.body
+.classList.toggle(
+"hide-ui"
+);
+
+}
+
+
+/* FULLSCREEN */
+
+if(
+key ===
+"f"
+) {
+
+enterPresentation();
+
+}
+
+
+/* RESTORE */
+
+if(
+key ===
+"r" &&
+removedWinners.length
+) {
+
+removedWinners
+.forEach(
+name => {
+
+if(
+!participants.includes(
+name
+)
+) {
+
+participants.push(
+name
+);
+
+}
+
+}
+);
+
+
+removedWinners = [];
+
+
+render();
+
+}
+
+
+/* UNDO */
+
+if(
+key ===
+"u" &&
+winners.length
+) {
+
+const winner =
+winners.shift();
+
+
+if(
+!participants.includes(
+winner.name
+)
+) {
+
+participants.push(
+winner.name
+);
+
+}
+
+
+render();
+
+}
+
+
+/* MUTE */
+
+if(
+key ===
+"m"
+) {
+
+soundMuted =
+!soundMuted;
+
+}
+
+
+/* ESC */
+
+if(
+key ===
+"escape"
+) {
+
+$("#winnerOverlay")
+.classList.remove(
+"show"
+);
+
+
+document.body
+.classList.remove(
+"hide-ui"
+);
+
+}
+
+}
+);
+
+
+
+/* =========================================
+   START APP
+========================================= */
+
+
+render();
+
+</script>
+
+
+</body>
+
+</html>
